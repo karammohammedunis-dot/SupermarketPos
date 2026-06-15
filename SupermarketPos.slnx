@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/SupermarketPos.Application/SupermarketPos.Application.csproj" />
+    <Project Path="src/SupermarketPos.Domain/SupermarketPos.Domain.csproj" />
+    <Project Path="src/SupermarketPos.Infrastructure/SupermarketPos.Infrastructure.csproj" />
+    <Project Path="src/SupermarketPos.Wpf/SupermarketPos.Wpf.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/SupermarketPos.Tests/SupermarketPos.Tests.csproj" />
+  </Folder>
+</Solution>

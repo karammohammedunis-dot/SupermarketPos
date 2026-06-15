@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="App_Title"><value>Süpermarket Yazar Kasa</value></data>
+
+  <data name="Login_Title"><value>Giriş Yap</value></data>
+  <data name="Login_Username"><value>Kullanıcı Adı</value></data>
+  <data name="Login_Password"><value>Şifre</value></data>
+  <data name="Login_Button"><value>Giriş</value></data>
+
+  <data name="Nav_Pos"><value>Satış</value></data>
+  <data name="Nav_Products"><value>Ürünler</value></data>
+  <data name="Nav_Reports"><value>Raporlar</value></data>
+  <data name="Nav_Settings"><value>Ayarlar</value></data>
+  <data name="Nav_Logout"><value>Çıkış</value></data>
+
+  <data name="Pos_ScanPrompt"><value>Barkod okutun veya ürün adı arayın…</value></data>
+  <data name="Pos_Cart"><value>Sepet</value></data>
+  <data name="Pos_Product"><value>Ürün</value></data>
+  <data name="Pos_UnitPrice"><value>Birim Fiyat</value></data>
+  <data name="Pos_Qty"><value>Adet</value></data>
+  <data name="Pos_LineTotal"><value>Tutar</value></data>
+  <data name="Pos_Remove"><value>Sil</value></data>
+  <data name="Pos_Total"><value>TOPLAM</value></data>
+  <data name="Pos_ItemCount"><value>Ürün sayısı</value></data>
+  <data name="Pos_VatBreakdown"><value>KDV Dağılımı</value></data>
+  <data name="Pos_Cash"><value>Nakit (F2)</value></data>
+  <data name="Pos_Card"><value>Kart (F3)</value></data>
+  <data name="Pos_Clear"><value>Temizle (F4)</value></data>
+  <data name="Pos_Tendered"><value>Alınan Tutar</value></data>
+  <data name="Pos_Change"><value>Para Üstü</value></data>
+  <data name="Pos_Pay"><value>Ödemeyi Tamamla</value></data>
+  <data name="Pos_CartDiscount"><value>Sepet İndirimi</value></data>
+  <data name="Pos_LineDiscount"><value>Satır İndirimi</value></data>
+  <data name="Pos_Empty"><value>Sepet boş</value></data>
+  <data name="Pos_NotFound"><value>Ürün bulunamadı</value></data>
+  <data name="Pos_DiscountPercent"><value>Yüzde %</value></data>
+  <data name="Pos_DiscountAmount"><value>Tutar ₺</value></data>
+  <data name="Pos_Apply"><value>Uygula</value></data>
+
+  <data name="Common_Save"><value>Kaydet</value></data>
+  <data name="Common_Cancel"><value>İptal</value></data>
+  <data name="Common_Add"><value>Ekle</value></data>
+  <data name="Common_Edit"><value>Düzenle</value></data>
+  <data name="Common_Delete"><value>Sil</value></data>
+  <data name="Common_Close"><value>Kapat</value></data>
+  <data name="Common_Error"><value>Hata</value></data>
+  <data name="Common_Success"><value>Başarılı</value></data>
+
+  <data name="Products_Title"><value>Ürünler ve Stok</value></data>
+  <data name="Products_Barcode"><value>Barkod</value></data>
+  <data name="Products_Name"><value>Ad</value></data>
+  <data name="Products_Price"><value>Fiyat (KDV dahil)</value></data>
+  <data name="Products_Vat"><value>KDV %</value></data>
+  <data name="Products_Unit"><value>Birim</value></data>
+  <data name="Products_Stock"><value>Stok</value></data>
+  <data name="Products_Category"><value>Kategori</value></data>
+  <data name="Products_Restock"><value>Stok Ekle</value></data>
+  <data name="Products_New"><value>Yeni Ürün</value></data>
+  <data name="Products_Piece"><value>Adet</value></data>
+  <data name="Products_Kilogram"><value>Kilogram</value></data>
+  <data name="Products_LowStockOnly"><value>Sadece düşük stok</value></data>
+
+  <data name="Reports_Title"><value>Satışlar ve Raporlar</value></data>
+  <data name="Reports_XReport"><value>X Raporu</value></data>
+  <data name="Reports_ZReport"><value>Z Raporu</value></data>
+  <data name="Reports_Day"><value>Gün</value></data>
+  <data name="Reports_Generate"><value>Oluştur</value></data>
+  <data name="Reports_History"><value>Satış Geçmişi</value></data>
+  <data name="Reports_SaleCount"><value>Satış adedi</value></data>
+  <data name="Reports_Gross"><value>Brüt Toplam</value></data>
+  <data name="Reports_Net"><value>Matrah (Net)</value></data>
+  <data name="Reports_Vat"><value>Toplam KDV</value></data>
+  <data name="Reports_ExportPdf"><value>PDF Dışa Aktar</value></data>
+  <data name="Reports_OpenReceipt"><value>Fişi Aç</value></data>
+  <data name="Reports_CashTotal"><value>Nakit Toplam</value></data>
+  <data name="Reports_CardTotal"><value>Kart Toplam</value></data>
+  <data name="Reports_ReceiptNo"><value>Fiş No</value></data>
+  <data name="Reports_Date"><value>Tarih</value></data>
+  <data name="Reports_Cashier"><value>Kasiyer</value></data>
+  <data name="Reports_Payment"><value>Ödeme</value></data>
+  <data name="Reports_PaymentSplit"><value>Ödeme Dağılımı</value></data>
+
+  <data name="Settings_Title"><value>Ayarlar</value></data>
+  <data name="Settings_StoreName"><value>Mağaza Adı</value></data>
+  <data name="Settings_StoreAddress"><value>Mağaza Adresi</value></data>
+  <data name="Settings_Language"><value>Dil</value></data>
+  <data name="Settings_LowStockThreshold"><value>Düşük Stok Eşiği</value></data>
+  <data name="Settings_VatRates"><value>KDV Oranları (virgülle)</value></data>
+  <data name="Settings_Saved"><value>Ayarlar kaydedildi.</value></data>
+
+  <data name="Msg_SaleComplete"><value>Satış tamamlandı. Fiş No: {0}</value></data>
+  <data name="Msg_ReceiptSaved"><value>Fiş PDF olarak kaydedildi.</value></data>
+  <data name="Msg_PrintReceipt"><value>Fişi Yazdır / Kaydet</value></data>
+</root>

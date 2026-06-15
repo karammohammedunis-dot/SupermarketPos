@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+
+  <data name="App_Title"><value>Supermarket POS</value></data>
+
+  <data name="Login_Title"><value>Sign In</value></data>
+  <data name="Login_Username"><value>Username</value></data>
+  <data name="Login_Password"><value>Password</value></data>
+  <data name="Login_Button"><value>Login</value></data>
+
+  <data name="Nav_Pos"><value>Register</value></data>
+  <data name="Nav_Products"><value>Products</value></data>
+  <data name="Nav_Reports"><value>Reports</value></data>
+  <data name="Nav_Settings"><value>Settings</value></data>
+  <data name="Nav_Logout"><value>Logout</value></data>
+
+  <data name="Pos_ScanPrompt"><value>Scan a barcode or search by name…</value></data>
+  <data name="Pos_Cart"><value>Cart</value></data>
+  <data name="Pos_Product"><value>Product</value></data>
+  <data name="Pos_UnitPrice"><value>Unit Price</value></data>
+  <data name="Pos_Qty"><value>Qty</value></data>
+  <data name="Pos_LineTotal"><value>Total</value></data>
+  <data name="Pos_Remove"><value>Remove</value></data>
+  <data name="Pos_Total"><value>TOTAL</value></data>
+  <data name="Pos_ItemCount"><value>Item count</value></data>
+  <data name="Pos_VatBreakdown"><value>VAT Breakdown</value></data>
+  <data name="Pos_Cash"><value>Cash (F2)</value></data>
+  <data name="Pos_Card"><value>Card (F3)</value></data>
+  <data name="Pos_Clear"><value>Clear (F4)</value></data>
+  <data name="Pos_Tendered"><value>Amount Tendered</value></data>
+  <data name="Pos_Change"><value>Change</value></data>
+  <data name="Pos_Pay"><value>Complete Payment</value></data>
+  <data name="Pos_CartDiscount"><value>Cart Discount</value></data>
+  <data name="Pos_LineDiscount"><value>Line Discount</value></data>
+  <data name="Pos_Empty"><value>Cart is empty</value></data>
+  <data name="Pos_NotFound"><value>Product not found</value></data>
+  <data name="Pos_DiscountPercent"><value>Percent %</value></data>
+  <data name="Pos_DiscountAmount"><value>Amount ₺</value></data>
+  <data name="Pos_Apply"><value>Apply</value></data>
+
+  <data name="Common_Save"><value>Save</value></data>
+  <data name="Common_Cancel"><value>Cancel</value></data>
+  <data name="Common_Add"><value>Add</value></data>
+  <data name="Common_Edit"><value>Edit</value></data>
+  <data name="Common_Delete"><value>Delete</value></data>
+  <data name="Common_Close"><value>Close</value></data>
+  <data name="Common_Error"><value>Error</value></data>
+  <data name="Common_Success"><value>Success</value></data>
+
+  <data name="Products_Title"><value>Products &amp; Inventory</value></data>
+  <data name="Products_Barcode"><value>Barcode</value></data>
+  <data name="Products_Name"><value>Name</value></data>
+  <data name="Products_Price"><value>Price (VAT incl.)</value></data>
+  <data name="Products_Vat"><value>VAT %</value></data>
+  <data name="Products_Unit"><value>Unit</value></data>
+  <data name="Products_Stock"><value>Stock</value></data>
+  <data name="Products_Category"><value>Category</value></data>
+  <data name="Products_Restock"><value>Restock</value></data>
+  <data name="Products_New"><value>New Product</value></data>
+  <data name="Products_Piece"><value>Piece</value></data>
+  <data name="Products_Kilogram"><value>Kilogram</value></data>
+  <data name="Products_LowStockOnly"><value>Low stock only</value></data>
+
+  <data name="Reports_Title"><value>Sales &amp; Reports</value></data>
+  <data name="Reports_XReport"><value>X-Report</value></data>
+  <data name="Reports_ZReport"><value>Z-Report</value></data>
+  <data name="Reports_Day"><value>Day</value></data>
+  <data name="Reports_Generate"><value>Generate</value></data>
+  <data name="Reports_History"><value>Sales History</value></data>
+  <data name="Reports_SaleCount"><value>Sale count</value></data>
+  <data name="Reports_Gross"><value>Gross Total</value></data>
+  <data name="Reports_Net"><value>Net (base)</value></data>
+  <data name="Reports_Vat"><value>Total VAT</value></data>
+  <data name="Reports_ExportPdf"><value>Export PDF</value></data>
+  <data name="Reports_OpenReceipt"><value>Open Receipt</value></data>
+  <data name="Reports_CashTotal"><value>Cash Total</value></data>
+  <data name="Reports_CardTotal"><value>Card Total</value></data>
+  <data name="Reports_ReceiptNo"><value>Receipt No</value></data>
+  <data name="Reports_Date"><value>Date</value></data>
+  <data name="Reports_Cashier"><value>Cashier</value></data>
+  <data name="Reports_Payment"><value>Payment</value></data>
+  <data name="Reports_PaymentSplit"><value>Payment Split</value></data>
+
+  <data name="Settings_Title"><value>Settings</value></data>
+  <data name="Settings_StoreName"><value>Store Name</value></data>
+  <data name="Settings_StoreAddress"><value>Store Address</value></data>
+  <data name="Settings_Language"><value>Language</value></data>
+  <data name="Settings_LowStockThreshold"><value>Low-stock Threshold</value></data>
+  <data name="Settings_VatRates"><value>VAT Rates (comma separated)</value></data>
+  <data name="Settings_Saved"><value>Settings saved.</value></data>
+
+  <data name="Msg_SaleComplete"><value>Sale complete. Receipt No: {0}</value></data>
+  <data name="Msg_ReceiptSaved"><value>Receipt saved as PDF.</value></data>
+  <data name="Msg_PrintReceipt"><value>Print / Save Receipt</value></data>
+</root>
