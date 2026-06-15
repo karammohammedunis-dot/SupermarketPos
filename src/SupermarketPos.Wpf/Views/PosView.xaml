@@ -143,13 +143,13 @@
                 <StackPanel DockPanel.Dock="Bottom">
                     <TextBlock Text="{Binding Status}" Foreground="{StaticResource AccentBrush}" TextWrapping="Wrap"
                                Margin="0,0,0,10" Visibility="{Binding Status, Converter={StaticResource StrToVis}}" />
-                    <Button Content="{loc:T Pos_Cash}" Command="{Binding OpenCashCommand}" Style="{StaticResource PrimaryButton}" Margin="0,4" />
+                    <Button Content="{loc:T Pos_Cash}" Command="{Binding OpenCashCommand}" Style="{StaticResource SuccessButton}" Margin="0,4" />
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Content="{loc:T Pos_Card}" Command="{Binding OpenCardCommand}" Style="{StaticResource GhostButton}" Margin="0,4,3,4" />
+                        <Button Grid.Column="0" Content="{loc:T Pos_Card}" Command="{Binding OpenCardCommand}" Style="{StaticResource InfoButton}" Margin="0,4,3,4" />
                         <Button Grid.Column="1" Content="{loc:T Pos_Clear}" Command="{Binding ClearCartDiscountCommand}" Style="{StaticResource GhostButton}" Margin="3,4,0,4" />
                     </Grid>
                 </StackPanel>
@@ -159,7 +159,7 @@
         </Border>
 
         <!-- PAYMENT OVERLAY -->
-        <Grid Grid.ColumnSpan="2" Background="#CC000000"
+        <Grid Grid.ColumnSpan="2" Background="#660F172A"
               Visibility="{Binding IsPaymentOpen, Converter={StaticResource BoolToVis}}">
             <Border Style="{StaticResource Card}" Width="420" Padding="32" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <StackPanel>
@@ -183,7 +183,7 @@
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Content="{loc:T Common_Cancel}" Command="{Binding CancelPaymentCommand}" Style="{StaticResource GhostButton}" Margin="0,0,6,0" />
-                        <Button Grid.Column="1" Content="{loc:T Pos_Pay}" Command="{Binding CompletePaymentCommand}" Style="{StaticResource PrimaryButton}" Margin="6,0,0,0" />
+                        <Button Grid.Column="1" Content="{loc:T Pos_Pay}" Command="{Binding CompletePaymentCommand}" Style="{StaticResource SuccessButton}" Margin="6,0,0,0" />
                     </Grid>
                 </StackPanel>
             </Border>

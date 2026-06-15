@@ -8,11 +8,35 @@
         FontFamily="Segoe UI">
 
     <Window.Resources>
-        <Style x:Key="NavButton" TargetType="Button" BasedOn="{StaticResource GhostButton}">
-            <Setter Property="HorizontalContentAlignment" Value="Left" />
+        <!-- Sidebar nav item: white text on the brand gradient, white pill when active -->
+        <Style x:Key="NavButton" TargetType="Button">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Margin" Value="0,3" />
-            <Setter Property="Background" Value="Transparent" />
-            <Setter Property="Padding" Value="16,12" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="b" Background="Transparent" CornerRadius="11" Padding="16,12">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"
+                                              TextElement.Foreground="{TemplateBinding Foreground}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="b" Property="Background" Value="#26FFFFFF" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Icon + localized label, both following the button's foreground -->
+        <Style x:Key="NavText" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Foreground" Value="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" />
         </Style>
     </Window.Resources>
 
@@ -20,22 +44,26 @@
         <!-- Shell: sidebar + content (visible once logged in) -->
         <Grid Visibility="{Binding IsLoggedIn, Converter={StaticResource BoolToVis}}">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="240" />
+                <ColumnDefinition Width="248" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
 
             <!-- Sidebar -->
-            <Border Grid.Column="0" Background="{StaticResource SurfaceBrush}" BorderBrush="{StaticResource BorderBrush}" BorderThickness="0,0,1,0">
-                <DockPanel Margin="16,22">
+            <Border Grid.Column="0" Background="{StaticResource BrandGradient}">
+                <DockPanel Margin="16,24">
                     <StackPanel DockPanel.Dock="Top">
-                        <TextBlock Text="🛒 POS" FontSize="22" FontWeight="Bold" Foreground="{StaticResource AccentBrush}" Margin="6,0,0,24" />
+                        <TextBlock Text="🛒 Market POS" FontSize="22" FontWeight="Bold" Foreground="White" Margin="6,0,0,28" />
 
-                        <Button Content="{loc:T Nav_Pos}" Command="{Binding ShowPosCommand}">
+                        <Button Command="{Binding ShowPosCommand}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="🧾" FontSize="16" Margin="0,0,12,0" Style="{StaticResource NavText}" />
+                                <TextBlock Text="{loc:T Nav_Pos}" Style="{StaticResource NavText}" />
+                            </StackPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding ActiveScreen}" Value="pos">
-                                            <Setter Property="Background" Value="{StaticResource Surface2Brush}" />
+                                            <Setter Property="Background" Value="White" />
                                             <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -43,13 +71,17 @@
                             </Button.Style>
                         </Button>
 
-                        <Button Content="{loc:T Nav_Products}" Command="{Binding ShowProductsCommand}"
+                        <Button Command="{Binding ShowProductsCommand}"
                                 Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="📦" FontSize="16" Margin="0,0,12,0" Style="{StaticResource NavText}" />
+                                <TextBlock Text="{loc:T Nav_Products}" Style="{StaticResource NavText}" />
+                            </StackPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding ActiveScreen}" Value="products">
-                                            <Setter Property="Background" Value="{StaticResource Surface2Brush}" />
+                                            <Setter Property="Background" Value="White" />
                                             <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -57,13 +89,17 @@
                             </Button.Style>
                         </Button>
 
-                        <Button Content="{loc:T Nav_Reports}" Command="{Binding ShowReportsCommand}"
+                        <Button Command="{Binding ShowReportsCommand}"
                                 Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="📊" FontSize="16" Margin="0,0,12,0" Style="{StaticResource NavText}" />
+                                <TextBlock Text="{loc:T Nav_Reports}" Style="{StaticResource NavText}" />
+                            </StackPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding ActiveScreen}" Value="reports">
-                                            <Setter Property="Background" Value="{StaticResource Surface2Brush}" />
+                                            <Setter Property="Background" Value="White" />
                                             <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -71,13 +107,17 @@
                             </Button.Style>
                         </Button>
 
-                        <Button Content="{loc:T Nav_Settings}" Command="{Binding ShowSettingsCommand}"
+                        <Button Command="{Binding ShowSettingsCommand}"
                                 Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="⚙" FontSize="16" Margin="0,0,12,0" Style="{StaticResource NavText}" />
+                                <TextBlock Text="{loc:T Nav_Settings}" Style="{StaticResource NavText}" />
+                            </StackPanel>
                             <Button.Style>
                                 <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding ActiveScreen}" Value="settings">
-                                            <Setter Property="Background" Value="{StaticResource Surface2Brush}" />
+                                            <Setter Property="Background" Value="White" />
                                             <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
                                         </DataTrigger>
                                     </Style.Triggers>
@@ -87,7 +127,9 @@
                     </StackPanel>
 
                     <StackPanel DockPanel.Dock="Bottom" VerticalAlignment="Bottom">
-                        <TextBlock Text="{Binding UserDisplay}" Style="{StaticResource Muted}" Margin="6,0,0,10" TextWrapping="Wrap" />
+                        <Border Background="#26FFFFFF" CornerRadius="11" Padding="12,10" Margin="0,0,0,12">
+                            <TextBlock Text="{Binding UserDisplay}" Foreground="White" FontSize="13" TextWrapping="Wrap" />
+                        </Border>
                         <Button Content="{loc:T Nav_Logout}" Command="{Binding LogoutCommand}" Style="{StaticResource DangerButton}" />
                     </StackPanel>
 
