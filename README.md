@@ -10,10 +10,20 @@ Local-only (SQLite), no internet required. Ships as a single-file Windows `.exe`
 
 ## Screenshots
 
-| Register (POS) | Products & Inventory | Reports (X/Z) |
-|---|---|---|
-| _![pos](docs/pos.png)_ | _![products](docs/products.png)_ | _![reports](docs/reports.png)_ |
+### Dashboard
+![Dashboard](docs/dashboard.png)
 
+### Register (POS)
+![Register / POS](docs/pos.png)
+
+### Products & Inventory
+![Products & Inventory](docs/products.png)
+
+### PDF output
+
+| Shelf labels (barcodes) | Receipt (fiş) |
+|---|---|
+| ![Shelf labels](docs/shelf-labels.png) | ![Receipt](docs/receipt.png) |
 
 ---
 
