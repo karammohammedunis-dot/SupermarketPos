@@ -34,6 +34,7 @@ public sealed class PosDbContext : DbContext
             e.Property(p => p.UnitPrice).HasColumnType("TEXT");
             e.Property(p => p.VatRate).HasColumnType("TEXT");
             e.Property(p => p.StockQuantity).HasColumnType("TEXT");
+            e.Property(p => p.ImagePath).HasMaxLength(500);
             e.HasOne(p => p.Category)
                 .WithMany()
                 .HasForeignKey(p => p.CategoryId)

@@ -17,6 +17,7 @@ public sealed class Product
     public decimal StockQuantity { get; private set; }
     public int CategoryId { get; private set; }
     public Category? Category { get; private set; }
+    public string? ImagePath { get; private set; }
 
     private Product() { } // EF
 
@@ -83,4 +84,7 @@ public sealed class Product
     public void SetUnit(Unit unit) => Unit = unit;
 
     public void SetCategory(int categoryId) => CategoryId = categoryId;
+
+    public void SetImagePath(string? imagePath) =>
+        ImagePath = string.IsNullOrWhiteSpace(imagePath) ? null : imagePath.Trim();
 }

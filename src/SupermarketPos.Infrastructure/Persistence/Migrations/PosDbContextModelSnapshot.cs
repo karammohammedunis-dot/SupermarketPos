@@ -81,6 +81,10 @@ namespace SupermarketPos.Infrastructure.Persistence.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("ImagePath")
+                        .HasMaxLength(500)
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)

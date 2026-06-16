@@ -27,6 +27,23 @@
                         </Style>
                     </DataGrid.RowStyle>
                     <DataGrid.Columns>
+                        <DataGridTemplateColumn Width="60">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Grid Width="40" Height="40">
+                                        <Border CornerRadius="8" Background="{Binding Product.CategoryId, Converter={StaticResource CatColor}}">
+                                            <TextBlock Text="{Binding Product.Name, Converter={StaticResource Initials}}" Foreground="White"
+                                                       FontSize="13" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <Rectangle RadiusX="8" RadiusY="8" Visibility="{Binding Product.ImagePath, Converter={StaticResource HasImageToVis}}">
+                                            <Rectangle.Fill>
+                                                <ImageBrush ImageSource="{Binding Product.ImagePath, Converter={StaticResource PathToImage}}" Stretch="UniformToFill" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </Grid>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTextColumn Header="{loc:T Products_Barcode}" Binding="{Binding Barcode}" Width="150" IsReadOnly="True" />
                         <DataGridTextColumn Header="{loc:T Products_Name}" Binding="{Binding Name}" Width="*" IsReadOnly="True" />
                         <DataGridTextColumn Header="{loc:T Products_Category}" Binding="{Binding CategoryName}" Width="130" IsReadOnly="True" />
@@ -133,6 +150,29 @@
                     </Grid>
 
                     <CheckBox Content="{loc:T Products_Kilogram}" IsChecked="{Binding Editor.IsKilogram}" Margin="0,0,0,12" />
+
+                    <!-- product image -->
+                    <Grid Margin="0,0,0,14">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid Grid.Column="0" Width="58" Height="58" Margin="0,0,12,0">
+                            <Border CornerRadius="10" Background="{Binding Editor.CategoryId, Converter={StaticResource CatColor}}">
+                                <TextBlock Text="{Binding Editor.Name, Converter={StaticResource Initials}}" Foreground="White"
+                                           FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                            </Border>
+                            <Rectangle RadiusX="10" RadiusY="10" Visibility="{Binding Editor.ImagePath, Converter={StaticResource HasImageToVis}}">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="{Binding Editor.ImagePath, Converter={StaticResource PathToImage}}" Stretch="UniformToFill" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </Grid>
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center">
+                            <Button Content="{loc:T Products_ChooseImage}" Command="{Binding Editor.BrowseImageCommand}" Style="{StaticResource GhostButton}" Margin="0,0,8,0" />
+                            <Button Content="✕" Command="{Binding Editor.ClearImageCommand}" Style="{StaticResource DangerButton}" Padding="11,6" />
+                        </StackPanel>
+                    </Grid>
 
                     <!-- restock (existing only) -->
                     <Grid Margin="0,4,0,16" Visibility="{Binding Editor.IsNew, Converter={StaticResource InverseBoolToVis}}">

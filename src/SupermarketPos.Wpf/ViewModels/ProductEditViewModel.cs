@@ -1,5 +1,7 @@
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using SupermarketPos.Domain.Entities;
 
 namespace SupermarketPos.Wpf.ViewModels;
@@ -16,6 +18,7 @@ public sealed partial class ProductEditViewModel : ObservableObject
     [ObservableProperty] private bool _isKilogram;
     [ObservableProperty] private string _stock = string.Empty;
     [ObservableProperty] private int _categoryId;
+    [ObservableProperty] private string? _imagePath;
 
     public ObservableCollection<decimal> VatRates { get; } = new();
     public ObservableCollection<Category> Categories { get; } = new();
@@ -29,6 +32,7 @@ public sealed partial class ProductEditViewModel : ObservableObject
         VatRate = defaultVat;
         IsKilogram = false;
         CategoryId = defaultCategoryId;
+        ImagePath = null;
     }
 
     public void Load(Product p)
@@ -41,5 +45,21 @@ public sealed partial class ProductEditViewModel : ObservableObject
         IsKilogram = p.Unit == Domain.Common.Unit.Kilogram;
         Stock = p.StockQuantity.ToString("0.###", System.Globalization.CultureInfo.InvariantCulture);
         CategoryId = p.CategoryId;
+        ImagePath = p.ImagePath;
     }
+
+    [RelayCommand]
+    private void BrowseImage()
+    {
+        var dialog = new OpenFileDialog
+        {
+            Title = "Ürün görseli seç",
+            Filter = "Görseller|*.png;*.jpg;*.jpeg;*.bmp;*.gif|Tüm dosyalar|*.*"
+        };
+        if (dialog.ShowDialog() == true)
+            ImagePath = dialog.FileName;
+    }
+
+    [RelayCommand]
+    private void ClearImage() => ImagePath = null;
 }

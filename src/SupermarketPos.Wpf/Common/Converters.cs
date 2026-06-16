@@ -34,6 +34,58 @@ public sealed class CategoryColorConverter : IValueConverter
         throw new NotSupportedException();
 }
 
+/// <summary>Loads an ImageSource from a file path; returns null (no image) on missing/invalid path.</summary>
+public sealed class PathToImageConverter : IValueConverter
+{
+    public object? Convert(object value, Type targetType, object? parameter, CultureInfo culture)
+    {
+        var path = value as string;
+        if (string.IsNullOrWhiteSpace(path) || !System.IO.File.Exists(path)) return null;
+        try
+        {
+            var bmp = new System.Windows.Media.Imaging.BitmapImage();
+            bmp.BeginInit();
+            bmp.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+            bmp.UriSource = new Uri(path, UriKind.Absolute);
+            bmp.DecodePixelWidth = 220;
+            bmp.EndInit();
+            bmp.Freeze();
+            return bmp;
+        }
+        catch { return null; }
+    }
+
+    public object ConvertBack(object value, Type targetType, object? parameter, CultureInfo culture) =>
+        throw new NotSupportedException();
+}
+
+/// <summary>True when there is a usable image at the given path (for placeholder toggling).</summary>
+public sealed class HasImageToVisibilityConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object? parameter, CultureInfo culture) =>
+        value is string s && !string.IsNullOrWhiteSpace(s) && System.IO.File.Exists(s)
+            ? Visibility.Visible : Visibility.Collapsed;
+
+    public object ConvertBack(object value, Type targetType, object? parameter, CultureInfo culture) =>
+        throw new NotSupportedException();
+}
+
+/// <summary>Up to two uppercase initials from a name, for avatar placeholders.</summary>
+public sealed class InitialsConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object? parameter, CultureInfo culture)
+    {
+        var name = (value as string ?? string.Empty).Trim();
+        if (name.Length == 0) return "?";
+        var parts = name.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        var s = parts.Length >= 2 ? $"{parts[0][0]}{parts[1][0]}" : name.Substring(0, Math.Min(2, name.Length));
+        return s.ToUpper(CultureInfo.CurrentCulture);
+    }
+
+    public object ConvertBack(object value, Type targetType, object? parameter, CultureInfo culture) =>
+        throw new NotSupportedException();
+}
+
 /// <summary>True -> Collapsed, False -> Visible (used to show the login screen while signed out).</summary>
 public sealed class InverseBooleanToVisibilityConverter : IValueConverter
 {

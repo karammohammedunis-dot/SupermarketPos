@@ -6,7 +6,8 @@
     <Grid>
         <Border Style="{StaticResource Card}" Width="380" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="32">
             <StackPanel>
-                <TextBlock Text="🛒 Supermarket POS" FontSize="22" FontWeight="Bold"
+                <Image Source="/Assets/logo.png" Width="72" Height="72" HorizontalAlignment="Center" Margin="0,0,0,12" />
+                <TextBlock Text="Market POS" FontSize="22" FontWeight="Bold"
                            Foreground="{StaticResource AccentBrush}" HorizontalAlignment="Center" Margin="0,0,0,6" />
                 <TextBlock Text="{loc:T Login_Title}" Style="{StaticResource Muted}" HorizontalAlignment="Center" Margin="0,0,0,24" />
 
@@ -28,6 +29,8 @@
 
                 <TextBlock Style="{StaticResource Muted}" HorizontalAlignment="Center" Margin="0,18,0,0"
                            Text="admin / admin  •  kasa / 1234" FontSize="11" />
+                <TextBlock Text="Developed by Sm3th" Foreground="{StaticResource MutedBrush}" Opacity="0.7"
+                           HorizontalAlignment="Center" Margin="0,10,0,0" FontSize="11" />
             </StackPanel>
         </Border>
     </Grid>

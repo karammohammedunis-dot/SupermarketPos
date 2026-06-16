@@ -102,7 +102,7 @@ A SQLite file is created on first run at:
 %LOCALAPPDATA%\SupermarketPos\pos.db
 ```
 
-It is migrated and seeded automatically (categories, ~15 products with mixed KDV rates, the two accounts, store settings).
+It is migrated and seeded automatically (11 categories, ~60 products with mixed KDV rates incl. weighed produce/meat, the two accounts, store settings).
 
 ---
 
@@ -144,3 +144,7 @@ Example: a `120,00 ₺` item at 20% KDV → net `100,00 ₺`, VAT `20,00 ₺`. C
 ## License
 
 [MIT](LICENSE)
+
+---
+
+<p align="center"><sub>Developed by <b>Sm3th</b></sub></p>

@@ -5,12 +5,14 @@
         Title="{loc:T App_Title}" Height="820" Width="1320"
         WindowStartupLocation="CenterScreen"
         Background="{StaticResource BgBrush}"
+        Icon="Assets/app.ico"
         FontFamily="Segoe UI">
 
     <Window.Resources>
         <!-- Sidebar nav item: white text on the brand gradient, white pill when active -->
         <Style x:Key="NavButton" TargetType="Button">
             <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="Transparent" />
             <Setter Property="FontSize" Value="15" />
             <Setter Property="FontWeight" Value="SemiBold" />
             <Setter Property="Cursor" Value="Hand" />
@@ -19,7 +21,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="b" Background="Transparent" CornerRadius="11" Padding="16,12">
+                        <Border x:Name="b" Background="{TemplateBinding Background}" CornerRadius="11" Padding="16,12">
                             <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Left"
                                               TextElement.Foreground="{TemplateBinding Foreground}" />
                         </Border>
@@ -149,6 +151,8 @@
                             <TextBlock Text="{Binding UserDisplay}" Foreground="White" FontSize="13" TextWrapping="Wrap" />
                         </Border>
                         <Button Content="{loc:T Nav_Logout}" Command="{Binding LogoutCommand}" Style="{StaticResource DangerButton}" />
+                        <TextBlock Text="Developed by Sm3th" Foreground="#99FFFFFF" FontSize="11"
+                                   HorizontalAlignment="Center" Margin="0,14,0,0" />
                     </StackPanel>
 
                     <Grid />

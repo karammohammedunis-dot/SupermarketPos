@@ -12,7 +12,13 @@
     <Product>Supermarket POS</Product>
     <Company>Sm3th</Company>
     <SatelliteResourceLanguages>en;tr</SatelliteResourceLanguages>
+    <ApplicationIcon>Assets\app.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Resource Include="Assets\app.ico" />
+    <Resource Include="Assets\logo.png" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\SupermarketPos.Application\SupermarketPos.Application.csproj" />

@@ -93,6 +93,7 @@ public sealed partial class ProductsViewModel : ObservableObject
             if (Editor.IsNew)
             {
                 var product = new Product(Editor.Barcode, Editor.Name, price, Editor.VatRate, unit, stock, Editor.CategoryId);
+                product.SetImagePath(Editor.ImagePath);
                 await _products.AddAsync(product);
             }
             else
@@ -106,6 +107,7 @@ public sealed partial class ProductsViewModel : ObservableObject
                 product.SetUnit(unit);
                 product.SetStock(stock);
                 product.SetCategory(Editor.CategoryId);
+                product.SetImagePath(Editor.ImagePath);
             }
 
             await _uow.SaveChangesAsync();

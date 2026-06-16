@@ -71,8 +71,17 @@
                                         Command="{Binding DataContext.AddFromResultsCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
                                         CommandParameter="{Binding}">
                                     <StackPanel>
-                                        <Border Width="42" Height="6" CornerRadius="3" HorizontalAlignment="Left"
-                                                Background="{Binding CategoryId, Converter={StaticResource CatColor}}" Margin="0,0,0,10" />
+                                        <Grid Height="84" Margin="0,0,0,8">
+                                            <Border CornerRadius="10" Background="{Binding CategoryId, Converter={StaticResource CatColor}}">
+                                                <TextBlock Text="{Binding Name, Converter={StaticResource Initials}}" Foreground="White"
+                                                           FontSize="28" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <Rectangle RadiusX="10" RadiusY="10" Visibility="{Binding ImagePath, Converter={StaticResource HasImageToVis}}">
+                                                <Rectangle.Fill>
+                                                    <ImageBrush ImageSource="{Binding ImagePath, Converter={StaticResource PathToImage}}" Stretch="UniformToFill" />
+                                                </Rectangle.Fill>
+                                            </Rectangle>
+                                        </Grid>
                                         <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextWrapping="Wrap" />
                                         <TextBlock Text="{Binding UnitPrice, StringFormat={}{0:N2} ₺}" FontFamily="{StaticResource MonoFont}"
                                                    Foreground="{StaticResource AccentBrush}" FontWeight="Bold" Margin="0,6,0,0" />
