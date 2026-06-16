@@ -6,6 +6,8 @@ public interface IProductRepository
 {
     Task<Product?> GetByIdAsync(int id, CancellationToken ct = default);
     Task<Product?> GetByBarcodeAsync(string barcode, CancellationToken ct = default);
+    /// <summary>Find a weighed product by the PLU embedded in a variable-measure barcode.</summary>
+    Task<Product?> GetByPluAsync(string plu, CancellationToken ct = default);
     Task<IReadOnlyList<Product>> SearchByNameAsync(string term, CancellationToken ct = default);
     Task<IReadOnlyList<Product>> GetAllAsync(CancellationToken ct = default);
     Task<IReadOnlyList<Product>> GetByCategoryAsync(int categoryId, CancellationToken ct = default);

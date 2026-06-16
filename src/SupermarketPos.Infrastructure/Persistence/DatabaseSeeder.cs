@@ -60,10 +60,11 @@ public static class DatabaseSeeder
             new Product("8690000000093", "Çikolata 80g",       19.90m, 0.20m, Unit.Piece, 80,  snacks.Id),
             new Product("8690000000109", "Cips 150g",          27.50m, 0.20m, Unit.Piece, 45,  snacks.Id),
             new Product("8690000000116", "Bisküvi 200g",       14.75m, 0.10m, Unit.Piece, 3,   snacks.Id),
-            // Produce (weighed)
-            new Product("2000000000015", "Domates",            21.90m, 0.01m, Unit.Kilogram, 35, produce.Id),
-            new Product("2000000000022", "Elma",               18.50m, 0.01m, Unit.Kilogram, 50, produce.Id),
-            new Product("2000000000039", "Muz",                39.90m, 0.01m, Unit.Kilogram, 22, produce.Id),
+            // Produce (weighed) — variable-measure EAN-13: "20" + 5-digit PLU + "00000" + check.
+            // A scale prints the same PLU with the real weight in grams (e.g. 2000001012505 = 1.250 kg Domates).
+            new Product("2000001000007", "Domates",            21.90m, 0.01m, Unit.Kilogram, 35, produce.Id),
+            new Product("2000002000006", "Elma",               18.50m, 0.01m, Unit.Kilogram, 50, produce.Id),
+            new Product("2000003000005", "Muz",                39.90m, 0.01m, Unit.Kilogram, 22, produce.Id),
             // Bakery
             new Product("8690000000123", "Ekmek",               8.50m, 0.01m, Unit.Piece, 90,  bakery.Id),
             // Cleaning

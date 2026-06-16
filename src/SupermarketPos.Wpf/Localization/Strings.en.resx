@@ -112,6 +112,7 @@
   <data name="Products_Kilogram"><value>Kilogram</value></data>
   <data name="Products_LowStockOnly"><value>Low stock only</value></data>
   <data name="Products_Status"><value>Status</value></data>
+  <data name="Products_ShelfLabels"><value>Shelf Labels (PDF)</value></data>
   <data name="Products_InStock"><value>In stock</value></data>
   <data name="Products_LowStock"><value>Low stock</value></data>
 

@@ -10,6 +10,7 @@
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
                     <CheckBox Content="{loc:T Products_LowStockOnly}" IsChecked="{Binding LowStockOnly}"
                               VerticalAlignment="Center" Margin="0,0,18,0" />
+                    <Button Content="{loc:T Products_ShelfLabels}" Command="{Binding PrintLabelsCommand}" Style="{StaticResource GhostButton}" Margin="0,0,10,0" />
                     <Button Content="{loc:T Products_New}" Command="{Binding NewCommand}" Style="{StaticResource PrimaryButton}" />
                 </StackPanel>
             </Grid>

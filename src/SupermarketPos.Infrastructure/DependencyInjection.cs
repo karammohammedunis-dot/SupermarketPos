@@ -38,6 +38,7 @@ public static class DependencyInjection
         // Documents (QuestPDF)
         services.AddScoped<IReceiptService, ReceiptService>();
         services.AddScoped<IReportPdfService, ReportPdfService>();
+        services.AddScoped<IShelfLabelService, ShelfLabelService>();
 
         return services;
     }

@@ -15,6 +15,14 @@ public sealed class ProductRepository : IProductRepository
     public Task<Product?> GetByBarcodeAsync(string barcode, CancellationToken ct = default) =>
         _db.Products.Include(p => p.Category).FirstOrDefaultAsync(p => p.Barcode == barcode, ct);
 
+    public async Task<Product?> GetByPluAsync(string plu, CancellationToken ct = default)
+    {
+        // PLU lives in digits 3-7 of a 13-digit '2'-prefixed barcode. Match in memory (small catalog).
+        var candidates = await _db.Products.Include(p => p.Category).ToListAsync(ct);
+        return candidates.FirstOrDefault(p =>
+            p.Barcode.Length == 13 && p.Barcode[0] == '2' && p.Barcode.Substring(2, 5) == plu);
+    }
+
     public async Task<IReadOnlyList<Product>> SearchByNameAsync(string term, CancellationToken ct = default)
     {
         term = (term ?? string.Empty).Trim();

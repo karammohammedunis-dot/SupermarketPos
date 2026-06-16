@@ -23,6 +23,24 @@ public sealed class ReceiptService : IReceiptService
     }
 }
 
+public sealed class ShelfLabelService : IShelfLabelService
+{
+    private readonly ISettingsRepository _settings;
+    public ShelfLabelService(ISettingsRepository settings) => _settings = settings;
+
+    public async Task<byte[]> RenderPdfAsync(IReadOnlyList<Product> products, CancellationToken ct = default)
+    {
+        var settings = await _settings.GetAsync(ct);
+        return new ShelfLabelDocument(products, settings.StoreName).GeneratePdf();
+    }
+
+    public async Task SavePdfAsync(IReadOnlyList<Product> products, string path, CancellationToken ct = default)
+    {
+        var bytes = await RenderPdfAsync(products, ct);
+        await File.WriteAllBytesAsync(path, bytes, ct);
+    }
+}
+
 public sealed class ReportPdfService : IReportPdfService
 {
     private readonly ISettingsRepository _settings;

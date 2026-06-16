@@ -112,6 +112,7 @@
   <data name="Products_Kilogram"><value>Kilogram</value></data>
   <data name="Products_LowStockOnly"><value>Sadece düşük stok</value></data>
   <data name="Products_Status"><value>Durum</value></data>
+  <data name="Products_ShelfLabels"><value>Raf Etiketleri (PDF)</value></data>
   <data name="Products_InStock"><value>Stokta</value></data>
   <data name="Products_LowStock"><value>Düşük Stok</value></data>
 

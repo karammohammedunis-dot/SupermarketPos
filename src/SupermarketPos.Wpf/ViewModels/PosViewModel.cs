@@ -96,6 +96,19 @@ public sealed partial class PosViewModel : ObservableObject
         var input = _barcode.Normalize(SearchText);
         if (string.IsNullOrWhiteSpace(input)) return;
 
+        // Variable-measure (weight-embedded) barcode from a scale: add the read weight directly.
+        if (_barcode.ParseWeight(input) is { } weighed)
+        {
+            var weighedProduct = await _products.GetByPluAsync(weighed.Plu);
+            if (weighedProduct is not null)
+            {
+                AddProduct(weighedProduct, weighed.WeightKg);
+                SearchText = string.Empty;
+                ShowResults = false;
+                return;
+            }
+        }
+
         var byBarcode = await _products.GetByBarcodeAsync(input);
         if (byBarcode is not null)
         {
@@ -132,9 +145,9 @@ public sealed partial class PosViewModel : ObservableObject
         SearchResults.Clear();
     }
 
-    private void AddProduct(Product product)
+    private void AddProduct(Product product, decimal? quantity = null)
     {
-        var qty = product.Unit == Domain.Common.Unit.Kilogram ? 1.000m : 1m;
+        var qty = quantity ?? (product.Unit == Domain.Common.Unit.Kilogram ? 1.000m : 1m);
         var existing = Lines.FirstOrDefault(l => l.Line.Product.Id == product.Id);
         _cart.AddOrIncrement(product, qty);
 

@@ -55,6 +55,13 @@ public interface IReceiptService
     Task SavePdfAsync(Sale sale, string path, CancellationToken ct = default);
 }
 
+/// <summary>Generates a printable PDF sheet of shelf labels (name, price, EAN-13 barcode).</summary>
+public interface IShelfLabelService
+{
+    Task<byte[]> RenderPdfAsync(IReadOnlyList<Product> products, CancellationToken ct = default);
+    Task SavePdfAsync(IReadOnlyList<Product> products, string path, CancellationToken ct = default);
+}
+
 /// <summary>Reports can be exported to PDF as well.</summary>
 public interface IReportPdfService
 {
@@ -62,8 +69,26 @@ public interface IReportPdfService
     Task SavePdfAsync(SalesReport report, string path, CancellationToken ct = default);
 }
 
-/// <summary>Normalizes raw scanner / keyboard input into a clean barcode.</summary>
+/// <summary>
+/// Result of decoding an in-store variable-measure (weight-embedded) EAN-13 barcode:
+/// the product look-up key (PLU) and the weight read from the barcode.
+/// </summary>
+public sealed record WeightBarcode(string Plu, decimal WeightKg);
+
+/// <summary>Normalizes raw scanner / keyboard input and decodes weight-embedded barcodes.</summary>
 public interface IBarcodeService
 {
     string Normalize(string raw);
+
+    /// <summary>True if the code looks like a variable-measure barcode (13 digits, '2' prefix).</summary>
+    bool IsWeightBarcode(string code);
+
+    /// <summary>
+    /// Decode a variable-measure EAN-13 (<c>2x PPPPP WWWWW C</c>: 2-digit prefix, 5-digit PLU,
+    /// 5-digit weight in grams, check digit). Returns null if the format or check digit is invalid.
+    /// </summary>
+    WeightBarcode? ParseWeight(string code);
+
+    /// <summary>Compute the EAN-13 check digit for a 12-digit base (used for shelf labels).</summary>
+    int Ean13CheckDigit(string twelveDigits);
 }

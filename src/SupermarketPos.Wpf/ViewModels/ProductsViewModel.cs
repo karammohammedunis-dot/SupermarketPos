@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Windows;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using Microsoft.Win32;
 using SupermarketPos.Application.Abstractions;
 using SupermarketPos.Domain.Common;
 using SupermarketPos.Domain.Entities;
@@ -15,17 +16,19 @@ public sealed partial class ProductsViewModel : ObservableObject
     private readonly IProductRepository _products;
     private readonly ICategoryRepository _categories;
     private readonly ISettingsRepository _settings;
+    private readonly IShelfLabelService _labels;
     private readonly IUnitOfWork _uow;
 
     private decimal _lowStockThreshold = 5m;
     private List<Category> _categoryList = new();
 
     public ProductsViewModel(IProductRepository products, ICategoryRepository categories,
-                             ISettingsRepository settings, IUnitOfWork uow)
+                             ISettingsRepository settings, IShelfLabelService labels, IUnitOfWork uow)
     {
         _products = products;
         _categories = categories;
         _settings = settings;
+        _labels = labels;
         _uow = uow;
     }
 
@@ -152,6 +155,30 @@ public sealed partial class ProductsViewModel : ObservableObject
                 await _uow.SaveChangesAsync();
             }
             await RefreshAsync();
+        }
+        catch (Exception ex)
+        {
+            Error(ex.Message);
+        }
+    }
+
+    [RelayCommand]
+    private async Task PrintLabelsAsync()
+    {
+        if (Products.Count == 0) return;
+        try
+        {
+            var items = Products.Select(r => r.Product).ToList();
+            var dialog = new SaveFileDialog
+            {
+                FileName = $"RafEtiketleri_{DateTime.Now:yyyyMMdd}.pdf",
+                Filter = "PDF (*.pdf)|*.pdf"
+            };
+            if (dialog.ShowDialog() != true) return;
+
+            await _labels.SavePdfAsync(items, dialog.FileName);
+            try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo(dialog.FileName) { UseShellExecute = true }); }
+            catch { /* no viewer */ }
         }
         catch (Exception ex)
         {
