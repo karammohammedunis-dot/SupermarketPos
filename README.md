@@ -1,4 +1,4 @@
-# 🛒 Supermarket POS (Yazar Kasa)
+# 🛒 Supermarket POS
 
 A real, object-oriented **point-of-sale** desktop application for a small supermarket — scan products, build a cart, apply discounts, take payment, print a TR-style receipt, and decrement stock — backed by an admin area for products, inventory, sales history and end-of-day reports.
 
@@ -14,7 +14,6 @@ Local-only (SQLite), no internet required. Ships as a single-file Windows `.exe`
 |---|---|---|
 | _![pos](docs/pos.png)_ | _![products](docs/products.png)_ | _![reports](docs/reports.png)_ |
 
-*(placeholders — drop screenshots into `docs/`)*
 
 ---
 
