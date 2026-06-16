@@ -20,7 +20,8 @@ Local-only (SQLite), no internet required. Ships as a single-file Windows `.exe`
 
 ## Features
 
-- **Register / POS** — barcode scan or name search, editable cart (pieces & weighed kg items), per-line and whole-cart discounts, live totals + per-rate VAT breakdown, cash (with live change) or simulated card payment, on-screen + PDF receipt, automatic stock decrement.
+- **Dashboard (Admin)** — colorful live metric cards: today's revenue / sales / VAT collected, plus total products, categories and low-stock count.
+- **Register / POS** — barcode scan or name search **plus colorful category tiles for tap-to-browse**, editable cart (pieces & weighed kg items), per-line and whole-cart discounts, live totals + per-rate VAT breakdown, cash (with live change) or simulated card payment, on-screen + PDF receipt, automatic stock decrement.
 - **Products & Inventory (Admin)** — CRUD products & categories, set price/VAT/stock, restock, **low-stock highlighting**.
 - **Sales & Reports (Admin)** — date-filtered sales history, open any receipt, **X-report** (running day totals) and **Z-report** (end-of-day close) with VAT breakdown and cash/card split, export reports to PDF.
 - **Settings (Admin)** — store name/address (receipt header), language, low-stock threshold, configurable KDV rate list.

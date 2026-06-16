@@ -245,4 +245,53 @@
         </Style.Triggers>
     </Style>
 
+    <!-- ============ Vibrant category palette (8 hues) ============ -->
+    <SolidColorBrush x:Key="Cat0" Color="#FFEF4444" />  <!-- red -->
+    <SolidColorBrush x:Key="Cat1" Color="#FF8B5CF6" />  <!-- violet -->
+    <SolidColorBrush x:Key="Cat2" Color="#FFEC4899" />  <!-- pink -->
+    <SolidColorBrush x:Key="Cat3" Color="#FFF59E0B" />  <!-- amber -->
+    <SolidColorBrush x:Key="Cat4" Color="#FF10B981" />  <!-- emerald -->
+    <SolidColorBrush x:Key="Cat5" Color="#FF3B82F6" />  <!-- blue -->
+    <SolidColorBrush x:Key="Cat6" Color="#FF14B8A6" />  <!-- teal -->
+    <SolidColorBrush x:Key="Cat7" Color="#FFF97316" />  <!-- orange -->
+
+    <!-- ============ Status badges ============ -->
+    <Style x:Key="Badge" TargetType="Border">
+        <Setter Property="CornerRadius" Value="999" />
+        <Setter Property="Padding" Value="10,4" />
+        <Setter Property="HorizontalAlignment" Value="Left" />
+    </Style>
+    <Style x:Key="BadgeText" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+
+    <!-- ============ Tappable product / category tile ============ -->
+    <Style x:Key="TileButton" TargetType="Button">
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderThickness" Value="0" />
+        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="b" Background="{TemplateBinding Background}" CornerRadius="14"
+                            Padding="{TemplateBinding Padding}" Effect="{StaticResource CardShadow}">
+                        <ContentPresenter />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="b" Property="Opacity" Value="0.92" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="b" Property="RenderTransform">
+                                <Setter.Value><ScaleTransform ScaleX="0.97" ScaleY="0.97" /></Setter.Value>
+                            </Setter>
+                            <Setter TargetName="b" Property="RenderTransformOrigin" Value="0.5,0.5" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

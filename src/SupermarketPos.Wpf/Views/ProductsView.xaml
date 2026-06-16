@@ -33,6 +33,36 @@
                         <DataGridTextColumn Header="{loc:T Products_Vat}" Binding="{Binding VatText}" Width="70" IsReadOnly="True" />
                         <DataGridTextColumn Header="{loc:T Products_Unit}" Binding="{Binding UnitText}" Width="60" IsReadOnly="True" />
                         <DataGridTextColumn Header="{loc:T Products_Stock}" Binding="{Binding StockText}" Width="80" IsReadOnly="True" ElementStyle="{StaticResource Money}" />
+                        <DataGridTemplateColumn Header="{loc:T Products_Status}" Width="130">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border CornerRadius="999" Padding="11,4" HorizontalAlignment="Left">
+                                        <Border.Style>
+                                            <Style TargetType="Border">
+                                                <Setter Property="Background" Value="#2216A34A" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsLowStock}" Value="True">
+                                                        <Setter Property="Background" Value="#22EF4444" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Border.Style>
+                                        <TextBlock Text="{Binding StatusText}" FontSize="12" FontWeight="SemiBold">
+                                            <TextBlock.Style>
+                                                <Style TargetType="TextBlock">
+                                                    <Setter Property="Foreground" Value="#16A34A" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding IsLowStock}" Value="True">
+                                                            <Setter Property="Foreground" Value="#EF4444" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </TextBlock.Style>
+                                        </TextBlock>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                         <DataGridTemplateColumn Width="150">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>

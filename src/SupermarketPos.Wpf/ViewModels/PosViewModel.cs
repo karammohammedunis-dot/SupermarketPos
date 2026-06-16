@@ -16,6 +16,7 @@ namespace SupermarketPos.Wpf.ViewModels;
 public sealed partial class PosViewModel : ObservableObject
 {
     private readonly IProductRepository _products;
+    private readonly ICategoryRepository _categoryRepo;
     private readonly IBarcodeService _barcode;
     private readonly ISaleService _sales;
     private readonly IReceiptService _receipts;
@@ -23,10 +24,11 @@ public sealed partial class PosViewModel : ObservableObject
 
     private readonly Cart _cart = new();
 
-    public PosViewModel(IProductRepository products, IBarcodeService barcode,
+    public PosViewModel(IProductRepository products, ICategoryRepository categoryRepo, IBarcodeService barcode,
                         ISaleService sales, IReceiptService receipts, IAuthService auth)
     {
         _products = products;
+        _categoryRepo = categoryRepo;
         _barcode = barcode;
         _sales = sales;
         _receipts = receipts;
@@ -36,7 +38,33 @@ public sealed partial class PosViewModel : ObservableObject
 
     public ObservableCollection<CartLineViewModel> Lines { get; } = new();
     public ObservableCollection<Product> SearchResults { get; } = new();
+    public ObservableCollection<CategoryTileViewModel> Categories { get; } = new();
     public ObservableCollection<VatLineViewModel> VatBreakdown { get; } = new();
+
+    [ObservableProperty] private int _selectedCategoryId;
+
+    /// <summary>Loads the colorful category tiles; called when navigating to the POS screen.</summary>
+    public async Task InitializeAsync()
+    {
+        if (Categories.Count > 0) return;
+        var cats = await _categoryRepo.GetAllAsync();
+        Categories.Clear();
+        var i = 0;
+        foreach (var c in cats)
+            Categories.Add(new CategoryTileViewModel(c, i++));
+    }
+
+    [RelayCommand]
+    private async Task SelectCategory(CategoryTileViewModel? tile)
+    {
+        if (tile is null) return;
+        SelectedCategoryId = tile.Category.Id;
+        var items = await _products.GetByCategoryAsync(tile.Category.Id);
+        SearchResults.Clear();
+        foreach (var p in items) SearchResults.Add(p);
+        ShowResults = SearchResults.Count > 0;
+        Status = SearchResults.Count == 0 ? LocalizationManager.Instance["Pos_NotFound"] : null;
+    }
 
     [ObservableProperty] private string _searchText = string.Empty;
     [ObservableProperty] private bool _showResults;
@@ -271,4 +299,18 @@ public sealed class VatLineViewModel
     public string RateText { get; }
     public string NetText { get; }
     public string VatText { get; }
+}
+
+public sealed class CategoryTileViewModel
+{
+    public Category Category { get; }
+    public System.Windows.Media.Brush Color { get; }
+
+    public CategoryTileViewModel(Category category, int index)
+    {
+        Category = category;
+        Color = SupermarketPos.Wpf.Common.CategoryColorConverter.Brush(index);
+    }
+
+    public string Name => Category.Name;
 }

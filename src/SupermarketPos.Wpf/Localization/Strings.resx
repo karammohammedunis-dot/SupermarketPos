@@ -58,6 +58,7 @@
   <data name="Login_Password"><value>Şifre</value></data>
   <data name="Login_Button"><value>Giriş</value></data>
 
+  <data name="Nav_Dashboard"><value>Panel</value></data>
   <data name="Nav_Pos"><value>Satış</value></data>
   <data name="Nav_Products"><value>Ürünler</value></data>
   <data name="Nav_Reports"><value>Raporlar</value></data>
@@ -110,6 +111,9 @@
   <data name="Products_Piece"><value>Adet</value></data>
   <data name="Products_Kilogram"><value>Kilogram</value></data>
   <data name="Products_LowStockOnly"><value>Sadece düşük stok</value></data>
+  <data name="Products_Status"><value>Durum</value></data>
+  <data name="Products_InStock"><value>Stokta</value></data>
+  <data name="Products_LowStock"><value>Düşük Stok</value></data>
 
   <data name="Reports_Title"><value>Satışlar ve Raporlar</value></data>
   <data name="Reports_XReport"><value>X Raporu</value></data>

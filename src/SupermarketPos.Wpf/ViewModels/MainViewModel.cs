@@ -15,6 +15,7 @@ public sealed partial class MainViewModel : ObservableObject
     private readonly IServiceProvider _provider;
     private readonly IAuthService _auth;
 
+    private DashboardViewModel? _dashboard;
     private PosViewModel? _pos;
     private ProductsViewModel? _products;
     private ReportsViewModel? _reports;
@@ -37,18 +38,30 @@ public sealed partial class MainViewModel : ObservableObject
     [ObservableProperty] private string _userDisplay = string.Empty;
     [ObservableProperty] private string _activeScreen = "pos";
 
-    private void OnLoggedIn(User user)
+    private async void OnLoggedIn(User user)
     {
         IsLoggedIn = true;
         IsAdmin = user.IsAdmin;
         UserDisplay = $"{user.DisplayName} ({user.Role})";
-        ShowPos();
+        if (user.IsAdmin) await ShowDashboardAsync();
+        else await ShowPosAsync();
     }
 
     [RelayCommand]
-    private void ShowPos()
+    private async Task ShowDashboardAsync()
+    {
+        if (!_auth.CurrentUser?.IsAdmin ?? true) return;
+        _dashboard ??= _provider.GetRequiredService<DashboardViewModel>();
+        await _dashboard.RefreshAsync();
+        CurrentViewModel = _dashboard;
+        ActiveScreen = "dashboard";
+    }
+
+    [RelayCommand]
+    private async Task ShowPosAsync()
     {
         _pos ??= _provider.GetRequiredService<PosViewModel>();
+        await _pos.InitializeAsync();
         CurrentViewModel = _pos;
         ActiveScreen = "pos";
     }
@@ -89,6 +102,7 @@ public sealed partial class MainViewModel : ObservableObject
         IsLoggedIn = false;
         IsAdmin = false;
         UserDisplay = string.Empty;
+        _dashboard = null;
         _pos = null;
         _products = null;
         _reports = null;

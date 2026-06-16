@@ -54,6 +54,24 @@
                     <StackPanel DockPanel.Dock="Top">
                         <TextBlock Text="🛒 Market POS" FontSize="22" FontWeight="Bold" Foreground="White" Margin="6,0,0,28" />
 
+                        <Button Command="{Binding ShowDashboardCommand}"
+                                Visibility="{Binding IsAdmin, Converter={StaticResource BoolToVis}}">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="🏠" FontSize="16" Margin="0,0,12,0" Style="{StaticResource NavText}" />
+                                <TextBlock Text="{loc:T Nav_Dashboard}" Style="{StaticResource NavText}" />
+                            </StackPanel>
+                            <Button.Style>
+                                <Style TargetType="Button" BasedOn="{StaticResource NavButton}">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ActiveScreen}" Value="dashboard">
+                                            <Setter Property="Background" Value="White" />
+                                            <Setter Property="Foreground" Value="{StaticResource AccentBrush}" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </Button.Style>
+                        </Button>
+
                         <Button Command="{Binding ShowPosCommand}">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Text="🧾" FontSize="16" Margin="0,0,12,0" Style="{StaticResource NavText}" />

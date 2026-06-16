@@ -40,29 +40,48 @@
                 </TextBlock>
             </Grid>
 
-            <!-- search results -->
-            <Border DockPanel.Dock="Top" Style="{StaticResource Card}" Padding="6" Margin="0,0,0,12"
+            <!-- colorful category chips -->
+            <ItemsControl DockPanel.Dock="Top" ItemsSource="{Binding Categories}" Margin="0,0,0,4">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Style="{StaticResource TileButton}" Background="{Binding Color}" Margin="0,0,10,10" Padding="18,12"
+                                Command="{Binding DataContext.SelectCategoryCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                CommandParameter="{Binding}">
+                            <TextBlock Text="{Binding Name}" Foreground="White" FontWeight="SemiBold" FontSize="14" />
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
+            <!-- product tiles for the chosen category / search -->
+            <Border DockPanel.Dock="Top" Style="{StaticResource Card}" Padding="12" Margin="0,0,0,12"
                     Visibility="{Binding ShowResults, Converter={StaticResource BoolToVis}}">
-                <ItemsControl ItemsSource="{Binding SearchResults}" MaxHeight="180">
-                    <ItemsControl.Template>
-                        <ControlTemplate>
-                            <ScrollViewer VerticalScrollBarVisibility="Auto"><ItemsPresenter /></ScrollViewer>
-                        </ControlTemplate>
-                    </ItemsControl.Template>
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <Button Command="{Binding DataContext.AddFromResultsCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
-                                    CommandParameter="{Binding}" Style="{StaticResource GhostButton}"
-                                    HorizontalContentAlignment="Stretch" Margin="0,2">
-                                <Grid>
-                                    <TextBlock Text="{Binding Name}" HorizontalAlignment="Left" />
-                                    <TextBlock Text="{Binding UnitPrice, StringFormat={}{0:N2} ₺}" HorizontalAlignment="Right"
-                                               FontFamily="{StaticResource MonoFont}" />
-                                </Grid>
-                            </Button>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" MaxHeight="240">
+                    <ItemsControl ItemsSource="{Binding SearchResults}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate><WrapPanel /></ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource TileButton}" Width="172" Margin="0,0,12,12" Padding="14,13"
+                                        Background="{StaticResource Surface2Brush}"
+                                        Command="{Binding DataContext.AddFromResultsCommand, RelativeSource={RelativeSource AncestorType=ItemsControl}}"
+                                        CommandParameter="{Binding}">
+                                    <StackPanel>
+                                        <Border Width="42" Height="6" CornerRadius="3" HorizontalAlignment="Left"
+                                                Background="{Binding CategoryId, Converter={StaticResource CatColor}}" Margin="0,0,0,10" />
+                                        <TextBlock Text="{Binding Name}" FontWeight="SemiBold" TextWrapping="Wrap" />
+                                        <TextBlock Text="{Binding UnitPrice, StringFormat={}{0:N2} ₺}" FontFamily="{StaticResource MonoFont}"
+                                                   Foreground="{StaticResource AccentBrush}" FontWeight="Bold" Margin="0,6,0,0" />
+                                    </StackPanel>
+                                </Button>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
             </Border>
 
             <!-- cart -->

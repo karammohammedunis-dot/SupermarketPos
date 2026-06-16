@@ -13,10 +13,14 @@
             <BooleanToVisibilityConverter x:Key="BoolToVis" />
             <conv:InverseBooleanToVisibilityConverter x:Key="InverseBoolToVis" />
             <conv:StringToVisibilityConverter x:Key="StrToVis" />
+            <conv:CategoryColorConverter x:Key="CatColor" />
 
             <!-- ViewModel -> View mapping -->
             <DataTemplate DataType="{x:Type vm:LoginViewModel}">
                 <views:LoginView />
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+                <views:DashboardView />
             </DataTemplate>
             <DataTemplate DataType="{x:Type vm:PosViewModel}">
                 <views:PosView />

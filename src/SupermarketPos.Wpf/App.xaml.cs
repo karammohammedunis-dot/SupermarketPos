@@ -53,6 +53,7 @@ public partial class App : System.Windows.Application
         services.AddSingleton<MainWindow>();
         services.AddSingleton<MainViewModel>();
         services.AddSingleton<LoginViewModel>();
+        services.AddTransient<DashboardViewModel>();
         services.AddTransient<PosViewModel>();
         services.AddTransient<ProductsViewModel>();
         services.AddTransient<ReportsViewModel>();

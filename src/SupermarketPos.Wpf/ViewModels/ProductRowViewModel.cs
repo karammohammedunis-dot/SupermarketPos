@@ -1,5 +1,6 @@
 using SupermarketPos.Domain.Entities;
 using SupermarketPos.Wpf.Common;
+using SupermarketPos.Wpf.Localization;
 
 namespace SupermarketPos.Wpf.ViewModels;
 
@@ -24,4 +25,5 @@ public sealed class ProductRowViewModel
     public string UnitText => Product.Unit == Domain.Common.Unit.Kilogram ? "kg" : "ad";
     public string StockText => MoneyText.Qty(Product.StockQuantity, Product.Unit == Domain.Common.Unit.Kilogram);
     public bool IsLowStock => Product.StockQuantity <= _lowStockThreshold;
+    public string StatusText => LocalizationManager.Instance[IsLowStock ? "Products_LowStock" : "Products_InStock"];
 }
