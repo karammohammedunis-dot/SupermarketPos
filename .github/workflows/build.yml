@@ -1,27 +1,22 @@
 name: Build Windows EXE
-on: workflow_dispatch: push: branches: [main]
+on: workflow_dispatch: push: branches: - main
 jobs: build: runs-on: windows-latest
 steps:
-  - name: Checkout
+  - name: Checkout repository
     uses: actions/checkout@v4
 
-  - name: Install .NET 8
+  - name: Setup .NET
     uses: actions/setup-dotnet@v4
     with:
-      dotnet-version: 8.0.x
+      dotnet-version: '8.0.x'
 
-  - name: Publish EXE
-    run: >
-      dotnet publish src/SupermarketPos.Wpf/SupermarketPos.Wpf.csproj
-      -c Release
-      -r win-x64
-      --self-contained true
-      -p:PublishSingleFile=true
-      -p:IncludeNativeLibrariesForSelfExtract=true
-      -p:EnableCompressionInSingleFile=true
-      -o ./publish
+  - name: Restore dependencies
+    run: dotnet restore src/SupermarketPos.Wpf/SupermarketPos.Wpf.csproj
 
-  - name: Upload EXE
+  - name: Publish Windows EXE
+    run: dotnet publish src/SupermarketPos.Wpf/SupermarketPos.Wpf.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o ./publish
+
+  - name: Upload application
     uses: actions/upload-artifact@v4
     with:
       name: SupermarketPOS-Windows
