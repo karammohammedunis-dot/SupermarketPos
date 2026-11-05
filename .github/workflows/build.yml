@@ -1,10 +1,24 @@
-name: Test Workflow
+name: Build Windows EXE
 
 on: [workflow_dispatch]
 
 jobs:
-  test:
+  build:
     runs-on: windows-latest
     steps:
-      - name: Test
-        run: echo Hello World
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Build EXE
+        run: dotnet publish src/SupermarketPos.Wpf/SupermarketPos.Wpf.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -o ./publish
+
+      - name: Upload EXE
+        uses: actions/upload-artifact@v4
+        with:
+          name: SupermarketPOS-Windows
+          path: publish/
